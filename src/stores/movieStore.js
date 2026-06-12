@@ -16,9 +16,9 @@ export const useMovieStore = defineStore('movie', () => {
         errorMessage.value = '';
 
         try {
-            const API_KEY = '721710aa3a5e7f93da43a2046bd03f1e';
+            const TMDB_API_Key = import.meta.env.VITE_TMDB_API_KEY;
             const movieParams = {
-                api_key: API_KEY,
+                api_key: TMDB_API_Key,
                 language: 'ko-KR',
                 region: 'KR',
                 sort_by: 'popularity.desc',
