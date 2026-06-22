@@ -85,6 +85,7 @@ const generateAIReview = async () => {
           <img v-if="store.selectedMovie?.poster_path"
             :src="`https://image.tmdb.org/t/p/w500${store.selectedMovie.poster_path}`"
             :alt="main-poster"
+            class="main-poster"
           /><div v-else class="poster-placeholder">포스터 이미지 없음</div>
         </div>
         <div class="info-zone">
