@@ -62,13 +62,11 @@ const pageSize = ref(12);
 const totalPages = computed(() => Math.max(1, Math.ceil(displayedMovies.value.length / pageSize.value)));
 const pagesArray = computed(() => Array.from({ length: totalPages.value }, (_, i) => i + 1));
 
-// 페이징된 데이터
 const pagedMovies = computed(() => {
   const start = (currentPage.value - 1) * pageSize.value;
   return displayedMovies.value.slice(start, start + pageSize.value);
 });
 
-// 페이지 변경 시 유효성 체크 및 스크롤
 const setPage = (n) => {
   const num = Number(n);
   if (Number.isNaN(num)) return;
@@ -80,7 +78,6 @@ const setPage = (n) => {
 const prevPage = () => setPage(currentPage.value - 1);
 const nextPage = () => setPage(currentPage.value + 1);
 
-// 검색어나 정렬이 변경되면 페이지를 1로 초기화
 watch([searchQuery, sortKey, sortDirection, displayedMovies], () => {
   if (currentPage.value > totalPages.value) currentPage.value = totalPages.value;
   if (currentPage.value === 0) currentPage.value = 1;
